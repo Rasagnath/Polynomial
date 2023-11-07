@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
 
-// Structure to represent a term in the polynomial
 struct Term {
     int coefficient;
     int exponent;
@@ -9,16 +8,12 @@ struct Term {
 
     Term(int coeff, int exp) : coefficient(coeff), exponent(exp), next(nullptr) {}
 };
-
-// Class to represent a polynomial using a linked list of terms
 class Polynomial {
 private:
-    Term* head; // Pointer to the first term in the polynomial
+    Term* head;
 
 public:
     Polynomial() : head(nullptr) {}
-
-    // Function to insert a new term into the polynomial
     void insertTerm(int coeff, int exp) {
         Term* newTerm = new Term(coeff, exp);
         if (head == nullptr || exp > head->exponent) {
@@ -40,7 +35,6 @@ public:
             current = current->next;
         }
     }
-    // Function to delete a term from the polynomial based on its exponent
     void deleteTerm(int exp) {
         if (head == nullptr) {
             std::cout << "Polynomial is empty. Cannot delete." << std::endl;
@@ -70,7 +64,6 @@ public:
         }
     }
 
-    // Function to display the polynomial
     void display() {
         if (head == nullptr) {
             std::cout << "0" << std::endl;
@@ -88,7 +81,6 @@ public:
         std::cout << std::endl;
     }
 
-    // Function to evaluate the polynomial for a given value of x
     int evaluate(int x) {
         int result = 0;
         Term* current = head;
@@ -102,8 +94,6 @@ public:
 
 int main() {
     Polynomial poly;
-
-    // Take input from the user for coefficients and exponents
     int coeff, exp;
     while (true) {
         std::cout << "Enter coefficient (or 0 to stop): ";
@@ -116,20 +106,15 @@ int main() {
         poly.insertTerm(coeff, exp);
     }
 
-    // Display the polynomial
     std::cout << "Polynomial: ";
     poly.display();
-
-    // Ask the user to delete a term based on its exponent
     std::cout << "Enter the exponent of the term to delete: ";
     std::cin >> exp;
     poly.deleteTerm(exp);
 
-    // Display the modified polynomial
     std::cout << "Modified Polynomial: ";
     poly.display();
 
-    // Evaluate the polynomial for a user-specified value of x
     int x;
     std::cout << "Enter the value of x to evaluate the polynomial: ";
     std::cin >> x;
