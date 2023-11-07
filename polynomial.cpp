@@ -27,6 +27,13 @@ public:
             current->next = newTerm;
         }
     }
+    void addPolynomial(const Polynomial& other) {
+        Term* current = other.head;
+        while (current != nullptr) {
+            insertTerm(current->coefficient, current->exponent);
+            current = current->next;
+        }
+    }
     void display() {
         if (head == nullptr) {
             std::cout << "0" << std::endl;
@@ -56,6 +63,7 @@ public:
 
 int main() {
     Polynomial poly;
+    Polynomial poly2;
     int coeff, exp;
     while (true) {
         std::cout << "Enter coefficient (or 0 to stop): ";
@@ -68,6 +76,21 @@ int main() {
         poly.insertTerm(coeff, exp);
     }
     std::cout << "Polynomial: ";
+    poly.display();
+     while (true) {
+        std::cout << "Enter coefficient for polynomial 2 (or 0 to stop): ";
+        std::cin >> coeff;
+        if (coeff == 0) {
+            break;
+        }
+        std::cout << "Enter exponent for polynomial 2: ";
+        std::cin >> exp;
+        poly2.insertTerm(coeff, exp);
+    }
+    std::cout << "Polynomial 2: ";
+    poly2.display();
+    poly.addPolynomial(poly2);
+    std::cout << "Resultant Polynomial: ";
     poly.display();
     int x;
     std::cout << "Enter the value of x to evaluate the polynomial: ";
