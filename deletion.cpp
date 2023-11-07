@@ -33,7 +33,13 @@ public:
             current->next = newTerm;
         }
     }
-
+     void addPolynomial(const Polynomial& other) {
+        Term* current = other.head;
+        while (current != nullptr) {
+            insertTerm(current->coefficient, current->exponent);
+            current = current->next;
+        }
+    }
     // Function to delete a term from the polynomial based on its exponent
     void deleteTerm(int exp) {
         if (head == nullptr) {
