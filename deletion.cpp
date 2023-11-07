@@ -130,5 +130,6 @@ int main() {
     int result = poly.evaluate(x);
     std::cout << "Value of the polynomial for x = " << x << " is " << result << std::endl;
 
+    std::cout<<"Thanks for checking our product";
     return 0;
 }
