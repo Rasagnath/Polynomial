@@ -116,7 +116,7 @@ int main() {
     poly.display();
 
     int x;
-    std::cout << "Enter any value of x to give value of polynomial: ";
+    std::cout << "Enter value of x to evaluate polynomial: ";
     std::cin >> x;
     int result = poly.evaluate(x);
     std::cout << "Value of the polynomial for x = " << x << " is " << result << std::endl;
